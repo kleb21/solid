@@ -1,0 +1,68 @@
+<button
+  type="button"
+  class="btn btn-link"
+  data-toggle="modal"
+  data-target="#exampleModalCenter"
+>
+  Add New Projects
+</button>
+
+<div
+  class="modal fade"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form [formGroup]="form">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input
+                id="title"
+                formControlName="title"
+                required
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input id="description"
+                formControlName="description"
+                class="form-control"/>
+            </div>
+            
+            <div formArrayName="tasks">
+              <div *ngFor="let task of tasks.controls; let i=index" [formGroupName]="i" class="task-group">
+                <div class="form-group">
+                  <label for="taskName">Task Name</label>
+                  <input id="taskName" formControlName="taskName" class="form-control"/>
+                </div>
+                <div class="form-group">
+                  <label for="taskDescription">Task Description</label>
+                  <input id="taskDescription" formControlName="taskDescription" class="form-control"/>
+                </div>
+              </div>
+            </div>
+          </form>
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          (click)="addNewProjects()"
+          data-dismiss="modal"
+          class="btn btn-light"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="container ">
+    <app-projects-add></app-projects-add>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-4 mb-4 mt-4" *ngFor="let project of projects">
+        <div class="card w-100" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"> {{ project.title }} </h5>
+            <p class="card-text">{{ project.description }}</p>       
+          </div>
+          <div class="m-3">
+              tasks:
+              <ng-template ngFor let-task [ngForOf]="project.tasks">
+                  <ul class="">
+                    <li class="">{{ task.title }}</li>
+                  </ul>
+              </ng-template>
+          </div>
+          <!-- <div class="d-flex justify-content-end">
+            <button class="btn btn-danger" (click)="deleteTask(task)">Delete</button>
+          </div> -->
+        </div>
+      </div>  
+    </div>
+  </div>
